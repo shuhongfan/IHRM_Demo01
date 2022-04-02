@@ -1,0 +1,203 @@
+swagger: "2.0"
+info:
+  description: Role
+  version: "1.0.0"
+  title: API-Role
+basePath: /sys
+paths:
+  /role:
+    post:
+      summary: 增加Role
+      parameters:
+      - in: body
+        name: body
+        description: Role实体
+        required: true
+        schema:
+          $ref: "#/definitions/Role"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: Role全部列表
+      parameters:
+        - name: page
+          in: query
+          description: 页码
+          required: true
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: 页大小
+          required: true
+          type: integer
+          format: int32     
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiRolePageResponse'
+  /role/list:            
+    get:
+      summary: Role全部列表
+      parameters:
+        - name: page
+          in: query
+          description: 页码
+          required: true
+          type: integer
+          format: int32
+        - name: size
+          in: query
+          description: 页大小
+          required: true
+          type: integer
+          format: int32     
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiRoleListResponse'            
+  /role/{roleId}:
+    get:
+      summary: 根据ID查询role
+      parameters:
+        - name: roleId
+          in: path
+          description: RoleID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiRoleResponse'
+    put:
+      summary: 修改Role
+      parameters:
+        - name: roleId
+          in: path
+          description: RoleID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Role实体
+          required: true
+          schema:
+            $ref: "#/definitions/Role"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除Role
+      parameters:
+        - name: roleId
+          in: path
+          description: RoleID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+  /role/assignPrem:
+    put:
+      summary: 分配权限
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema: 
+            $ref: '#/definitions/AssignPerm'
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'            
+definitions:
+  Role:
+    type: "object"
+    properties:
+      id:
+        type: "string"        
+        description: "主键ID"
+      name:
+        type: "string"        
+        description: "权限名称"
+      description:
+        type: "string"        
+        description: "说明"
+      companyId:
+        type: "string"        
+        description: "企业id"
+  AssignPerm: 
+    type: "object"
+    properties: 
+      id:
+        type: "string"
+      permIds:
+        type: "array"
+        items:
+            type: "string"        
+  RoleList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/Role'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiRoleResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/Role'
+  ApiRoleListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/RoleList'
+  ApiRolePageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/RoleList'

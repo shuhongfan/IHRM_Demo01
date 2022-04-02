@@ -1,0 +1,215 @@
+swagger: "2.0"
+info:
+  description: User
+  version: "1.0.0"
+  title: 人脸登录API
+basePath: /sys/faceLogin
+paths: 
+  /qrcode:
+    get:
+      summary: 获取二维码
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/QRCodeResponse'           
+  /qrcode/{code}:
+    get:
+      summary: 检查二维码：登录页面轮询调用此方法，根据唯一标识code判断用户登录情况
+      parameters:
+        - name: code
+          in: query
+          type: string
+      responses:
+        200:
+          description: 查询成功
+          schema:
+            $ref: '#/definitions/QRCheckResponse'
+  /checkFace:
+    post:
+      summary: 图像检测
+      parameters:
+        - name: file
+          in: formData
+          description: 图片
+          required: true
+          type: file
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'            
+  /{code}:
+    post:
+      summary: 人脸登录：根据落地页随机拍摄的面部头像进行登录
+      parameters:
+        - name: code
+          in: path
+          description: code唯一标识
+          required: true
+          type: string
+        - name: file
+          in: formData
+          description: 图片
+          required: true
+          type: file
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'        
+         
+definitions:
+  QRCodeResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string" 
+      data:
+        type: "object"
+        properties:
+          code:
+            type: "string"
+            description: 唯一标识
+          file:
+            type: "string"
+            description: dataUrl
+  QRCheckResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string" 
+      data:
+        type: "object"
+        properties:
+          state:
+            type: "string"
+            description: 唯一标识
+          token:
+            type: "string"
+            description: dataUrl  
+          userId:
+            type: "string"
+            description: dataUrl 
+  AssignRoles: 
+    type: "object"
+    properties: 
+      id:
+        type: "string"
+      roleIds:
+        type: "array"
+        items:
+            type: "string"
+  UserList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/User'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ProfileResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string" 
+      data:
+        $ref: '#/definitions/Profile'     
+  Profile: 
+    type: "object"
+    properties:
+      mobile:
+        type: "string" 
+      username:
+        type: "string" 
+      company:
+        type: "string" 
+      roles:
+        type: "object"
+        properties:
+            menus:
+              type: "array"
+              items: 
+                type: "string"
+            points:
+              type: "array"
+              items: 
+                type: "string"            
+            apis:
+              type: "array"
+              items: 
+                type: "string"
+  LoginResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"    
+      data: 
+        type: "string"
+  ApiUserResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/User'
+  ApiUserListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/UserList'
+  ApiUserPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/UserList'

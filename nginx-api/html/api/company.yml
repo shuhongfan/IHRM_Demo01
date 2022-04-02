@@ -1,0 +1,192 @@
+swagger: "2.0"
+info:
+  description: Company
+  version: "1.0.0"
+  title: API-Company
+basePath: /
+paths:
+  /company:
+    post:
+      summary: 增加Company
+      parameters:
+      - in: body
+        name: body
+        description: Company实体
+        required: true
+        schema:
+          $ref: "#/definitions/Company"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: Company全部列表
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiCompanyListResponse'
+  /company/{companyId}:
+    get:
+      summary: 根据ID查询company
+      parameters:
+        - name: companyId
+          in: path
+          description: CompanyID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiCompanyResponse'
+    put:
+      summary: 修改Company
+      parameters:
+        - name: companyId
+          in: path
+          description: CompanyID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Company实体
+          required: true
+          schema:
+            $ref: "#/definitions/Company"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除Company
+      parameters:
+        - name: companyId
+          in: path
+          description: CompanyID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+definitions:
+  Company:
+    type: "object"
+    properties:
+      id:
+        type: "string"        
+        description: "ID"
+      name:
+        type: "string"        
+        description: "公司名称"
+      managerId:
+        type: "string"        
+        description: "企业登录账号ID"
+      version:
+        type: "string"        
+        description: "当前版本"
+      renewalDate:
+        type: "string"        
+        description: "续期时间"
+      expirationDate:
+        type: "string"        
+        description: "到期时间"
+      companyArea:
+        type: "string"        
+        description: "公司地区"
+      companyAddress:
+        type: "string"        
+        description: "公司地址"
+      businessLicenseId:
+        type: "string"        
+        description: "营业执照-图片ID"
+      legalRepresentative:
+        type: "string"        
+        description: "法人代表"
+      companyPhone:
+        type: "string"        
+        description: "公司电话"
+      mailbox:
+        type: "string"        
+        description: "邮箱"
+      companySize:
+        type: "string"        
+        description: "公司规模"
+      industry:
+        type: "string"        
+        description: "所属行业"
+      remarks:
+        type: "string"        
+        description: "备注"
+      auditState:
+        type: "string"        
+        description: "审核状态"
+      state:
+        type: "string"        
+        description: "状态"
+      balance:
+        type: "string"        
+        description: "当前余额"
+      createTime:
+        type: "string"        
+        description: "创建时间"
+
+  CompanyList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/Company'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiCompanyResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/Company'
+  ApiCompanyListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/CompanyList'
+  ApiCompanyPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/CompanyList'

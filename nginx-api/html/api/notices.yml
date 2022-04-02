@@ -1,0 +1,6 @@
+swagger: "2.0"
+info:
+  description: 暂未实现
+  version: "1.0.0"
+  title: API-Notices
+basePath: /notices

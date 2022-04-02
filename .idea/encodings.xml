@@ -4,7 +4,9 @@
     <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_common_model/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_company/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ihrm_parent/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ihrm_parent/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/shiro_springboot/src/main/java" charset="UTF-8" />
   </component>
 </project>

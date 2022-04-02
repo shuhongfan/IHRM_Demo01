@@ -1,0 +1,491 @@
+swagger: "2.0"
+info:
+  description: Employee
+  version: "1.0.0"
+  title: API-employee
+basePath: /employee
+paths: 
+  /{id}/personalInfo:
+    put:
+      summary: 保存员工个人详细信息
+      parameters:
+      - in: body
+        name: body
+        description: User实体
+        required: true
+        schema:
+          $ref: "#/definitions/UserCompanyPersonal"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: 查询员工个人详细信息
+      parameters:
+        - name: userId
+          in: path
+          description: UserID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/UserCompanyPersonal'
+  /{id}/jobs:
+    put:
+      summary: 保存员工岗位信息
+      parameters:
+      - in: body
+        name: body
+        description: User实体
+        required: true
+        schema:
+          $ref: "#/definitions/UserCompanyJobs"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: 读取员工岗位信息
+      parameters:
+        - name: userId
+          in: path
+          description: UserID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/UserCompanyJobs'       
+  /{id}/transferPosition:
+    put:
+      summary: 保存调岗申请
+      parameters:
+        - in: body
+          name: body
+          description: Transferposition实体
+          required: true
+          schema:
+            $ref: "#/definitions/Transferposition"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: 读取调岗申请
+      parameters:
+        - name: userId
+          in: path
+          description: UserID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/Transferposition'   
+  /{id}/leave:
+    put:
+      summary: 保存调岗申请
+      parameters:
+        - in: body
+          name: body
+          description: Transferposition实体
+          required: true
+          schema:
+            $ref: "#/definitions/Resignation"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: 读取调岗申请
+      parameters:
+        - name: userId
+          in: path
+          description: UserID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/Resignation'             
+  /{id}/positive:
+    put:
+      summary: 保存转正申请
+      parameters:
+      - in: body
+        name: body
+        description: User实体
+        required: true
+        schema:
+          $ref: "#/definitions/Positive"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: 读取转正申请
+      parameters:
+        - name: userId
+          in: path
+          description: UserID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/Positive'      
+  /export/{month}:
+    get:
+      summary: 月人事报表下载
+      parameters:
+        - name: userId
+          in: path
+          description: UserID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiUserResponse'            
+                    
+definitions:
+  UserCompanyPersonal:
+    type: "object"
+    properties:
+      userId:
+        type: "string"        
+        description: "用户ID"
+      username:
+        type: "string"        
+        description: ""
+      mobile:
+        type: "string"        
+        description: ""
+      timeOfEntry:
+        type: "string"        
+        description: ""
+      departmentName:
+        type: "string"        
+        description: ""
+      companyid:
+        type: "string"        
+        description: "公司ID"
+      sex:
+        type: "string"        
+        description: "性别"
+      dateOfBirth:
+        type: "string"        
+        description: "出生日期"
+      theHighestDegreeOfEducation:
+        type: "string"        
+        description: "最高学历"
+      nationalArea:
+        type: "string"        
+        description: "国家地区"
+      passportNo:
+        type: "string"        
+        description: "护照号"
+      idNumber:
+        type: "string"        
+        description: "身份证号"
+      idCardPhotoPositive:
+        type: "string"        
+        description: "身份证照片-正面"
+      idCardPhotoBack:
+        type: "string"        
+        description: "身份证照片-背面"
+      nativePlace:
+        type: "string"        
+        description: "籍贯"
+      nation:
+        type: "string"        
+        description: "民族"
+      englishName:
+        type: "string"        
+        description: "英文名"
+      maritalStatus:
+        type: "string"        
+        description: "婚姻状况"
+      staffPhoto:
+        type: "string"        
+        description: "员工照片"
+      birthday:
+        type: "string"        
+        description: "生日"
+      zodiac:
+        type: "string"        
+        description: "属相"
+      age:
+        type: "string"        
+        description: "年龄"
+      constellation:
+        type: "string"        
+        description: "星座"
+      bloodType:
+        type: "string"        
+        description: "血型"
+      domicile:
+        type: "string"        
+        description: "户籍所在地"
+      politicalOutlook:
+        type: "string"        
+        description: "政治面貌"
+      timeToJoinTheParty:
+        type: "string"        
+        description: "入党时间"
+      archivingOrganization:
+        type: "string"        
+        description: "存档机构"
+      stateOfChildren:
+        type: "string"        
+        description: "子女状态"
+      doChildrenHaveCommercialInsurance:
+        type: "string"        
+        description: "子女有无商业保险"
+      isThereAnyViolationOfLawOrDiscipline:
+        type: "string"        
+        description: "有无违法违纪行为"
+      areThereAnyMajorMedicalHistories:
+        type: "string"        
+        description: "有无重大病史"
+      qq:
+        type: "string"        
+        description: "QQ"
+      wechat:
+        type: "string"        
+        description: "微信"
+      residenceCardCity:
+        type: "string"        
+        description: "居住证城市"
+      dateOfResidencePermit:
+        type: "string"        
+        description: "居住证办理日期"
+      residencePermitDeadline:
+        type: "string"        
+        description: "居住证截止日期"
+      placeOfResidence:
+        type: "string"        
+        description: "现居住地"
+      postalAddress:
+        type: "string"        
+        description: "通讯地址"
+      contactTheMobilePhone:
+        type: "string"        
+        description: ""
+      personalMailbox:
+        type: "string"        
+        description: ""
+      emergencyContact:
+        type: "string"        
+        description: "紧急联系人"
+      emergencyContactNumber:
+        type: "string"        
+        description: "紧急联系电话"
+      socialSecurityComputerNumber:
+        type: "string"        
+        description: "社保电脑号"
+      providentFundAccount:
+        type: "string"        
+        description: "公积金账号"
+      bankCardNumber:
+        type: "string"        
+        description: "银行卡号"
+      openingBank:
+        type: "string"        
+        description: "开户行"
+      educationalType:
+        type: "string"        
+        description: "学历类型"
+      graduateSchool:
+        type: "string"        
+        description: "毕业学校"
+      enrolmentTime:
+        type: "string"        
+        description: "入学时间"
+      graduationTime:
+        type: "string"        
+        description: "毕业时间"
+      major:
+        type: "string"        
+        description: "专业"
+      graduationCertificate:
+        type: "string"        
+        description: "毕业证书"
+      certificateOfAcademicDegree:
+        type: "string"        
+        description: "学位证书"
+      homeCompany:
+        type: "string"        
+        description: "上家公司"
+      title:
+        type: "string"        
+        description: "职称"
+      resume:
+        type: "string"        
+        description: "简历"
+      isThereAnyCompetitionRestriction:
+        type: "string"        
+        description: "有无竞业限制"
+      proofOfDepartureOfFormerCompany:
+        type: "string"        
+        description: "前公司离职证明"
+      remarks:
+        type: "string"        
+        description: "备注"
+  UserCompanyJobs:
+    type: "object"
+    properties:
+      userId:
+        type: "string"        
+        description: "员工ID"
+      companyId:
+        type: "string"        
+        description: "企业ID"
+      post:
+        type: "string"        
+        description: "岗位"
+      workMailbox:
+        type: "string"        
+        description: "工作邮箱"
+      rank:
+        type: "string"        
+        description: "职级"
+      correctionEvaluation:
+        type: "string"        
+        description: "转正评价"
+      reportId:
+        type: "string"        
+        description: "汇报对象"
+      reportName:
+        type: "string"        
+        description: ""
+      stateOfCorrection:
+        type: "string"        
+        description: "转正状态"
+      hrbp:
+        type: "string"        
+        description: "hrbp"
+      workingTimeForTheFirstTime:
+        type: "string"        
+        description: "首次参加工作时间"
+      adjustmentAgedays:
+        type: "string"        
+        description: "调整司龄天"
+      adjustmentOfLengthOfService:
+        type: "string"        
+        description: "调整工龄天"
+      workingCity:
+        type: "string"        
+        description: "工作城市"
+      taxableCity:
+        type: "string"        
+        description: "纳税城市"
+      currentContractStartTime:
+        type: "string"        
+        description: "现合同开始时间"
+      closingTimeOfCurrentContract:
+        type: "string"        
+        description: "现合同结束时间"
+      initialContractStartTime:
+        type: "string"        
+        description: "首次合同开始时间"
+      firstContractTerminationTime:
+        type: "string"        
+        description: "首次合同结束时间"
+      contractPeriod:
+        type: "string"        
+        description: "合同期限"
+      contractDocuments:
+        type: "string"        
+        description: "合同文件"
+      renewalNumber:
+        type: "string"        
+        description: "续签次数"
+      otherRecruitmentChannels:
+        type: "string"        
+        description: "其他招聘渠道"
+      recruitmentChannels:
+        type: "string"        
+        description: "招聘渠道"
+      socialRecruitment:
+        type: "string"        
+        description: "社招校招"
+      recommenderBusinessPeople:
+        type: "string"        
+        description: "推荐企业人"  
+  Resignation:
+    type: "object"
+    properties:
+      userId:
+        type: "string"        
+        description: "用户ID"
+      resignationTime:
+        type: "string"        
+        description: ""
+      typeOfTurnover:
+        type: "string"        
+        description: "离职类型"
+      reasonsForLeaving:
+        type: "string"        
+        description: "申请离职原因"
+      compensation:
+        type: "string"        
+        description: "补偿金"
+      notifications:
+        type: "string"        
+        description: "代通知金"
+      socialSecurityReductionMonth:
+        type: "string"        
+        description: "社保减员月"
+      providentFundReductionMonth:
+        type: "string"        
+        description: "公积金减员月"
+      picture:
+        type: "string"        
+        description: "图片"
+      createTime:
+        type: "string"        
+        description: "创建时间"        
+  Positive:
+    type: "object"
+    properties:
+      userId:
+        type: "string"        
+        description: "员工ID"
+      dateOfCorrection:
+        type: "string"        
+        description: "转正日期"
+      correctionEvaluation:
+        type: "string"        
+        description: "转正评价"
+      enclosure:
+        type: "string"        
+        description: "附件"
+      estatus:
+        type: "string"        
+        description: "单据状态 1是未执行，2是已执行"
+      createTime:
+        type: "string"        
+        description: "创建时间"      
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"        

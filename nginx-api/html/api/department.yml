@@ -1,0 +1,163 @@
+swagger: "2.0"
+info:
+  description: Department
+  version: "1.0.0"
+  title: API-Department
+basePath: /company
+paths:
+  /department:
+    post:
+      summary: 增加Department
+      parameters:
+      - in: body
+        name: body
+        description: Department实体
+        required: true
+        schema:
+          $ref: "#/definitions/Department"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: Department全部列表
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiDepartmentListResponse'
+  /department/{departmentId}:
+    get:
+      summary: 根据ID查询department
+      parameters:
+        - name: departmentId
+          in: path
+          description: DepartmentID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiDepartmentResponse'
+    put:
+      summary: 修改Department
+      parameters:
+        - name: departmentId
+          in: path
+          description: DepartmentID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Department实体
+          required: true
+          schema:
+            $ref: "#/definitions/Department"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除Department
+      parameters:
+        - name: departmentId
+          in: path
+          description: DepartmentID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+definitions:
+  Department:
+    type: "object"
+    properties:
+      id:
+        type: "string"        
+        description: ""
+      companyId:
+        type: "string"        
+        description: "企业ID"
+      parentId:
+        type: "string"        
+        description: "父级部门ID"
+      name:
+        type: "string"        
+        description: "部门名称"
+      code:
+        type: "string"        
+        description: "部门编码"
+      introduce:
+        type: "string"        
+        description: "介绍"
+      manager:
+        type: "string"        
+        description: "部门负责人"
+  DepartmentList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/Department'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiDepartmentResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/Department'
+  ApiDepartmentListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          companyId:
+            type: "string"
+          companyName:
+            type: "string"
+          companyManage:
+            type: "string"      
+          depts:
+            $ref: '#/definitions/DepartmentList'
+  ApiDepartmentPageResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      success:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties:
+          total:
+            type: "integer"
+            format: "int32"
+          rows:
+            $ref: '#/definitions/DepartmentList'

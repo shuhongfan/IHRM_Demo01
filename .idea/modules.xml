@@ -7,6 +7,9 @@
       <module fileurl="file://$PROJECT_DIR$/ihrm_parent/ihrm_common_model/ihrm_common_model.iml" filepath="$PROJECT_DIR$/ihrm_parent/ihrm_common_model/ihrm_common_model.iml" />
       <module fileurl="file://$PROJECT_DIR$/ihrm_parent/ihrm_company/ihrm_company.iml" filepath="$PROJECT_DIR$/ihrm_parent/ihrm_company/ihrm_company.iml" />
       <module fileurl="file://$PROJECT_DIR$/ihrm_parent/ihrm_parent.iml" filepath="$PROJECT_DIR$/ihrm_parent/ihrm_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ihrm_parent/ihrm_system/ihrm_system.iml" filepath="$PROJECT_DIR$/ihrm_parent/ihrm_system/ihrm_system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro-test/shiro-test.iml" filepath="$PROJECT_DIR$/shiro-test/shiro-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/shiro_springboot/shiro_springboot.iml" filepath="$PROJECT_DIR$/shiro_springboot/shiro_springboot.iml" />
     </modules>
   </component>
 </project>

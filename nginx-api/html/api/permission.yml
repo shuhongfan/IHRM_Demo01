@@ -1,0 +1,196 @@
+swagger: "2.0"
+info:
+  description: Permission
+  version: "1.0.0"
+  title: API-Permission
+basePath: /ihrm
+paths:
+  /permission:
+    post:
+      summary: 增加Permission
+      description: 1：菜单  2：按钮  3：API接口  不同的类型对应不同的实体属性
+      parameters:
+      - in: body
+        name: body
+        description: Permission实体
+        required: true
+        schema:
+          $ref: "#/definitions/Permission"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    get:
+      summary: Permission全部列表
+      description: 查询全部权限列表type：0：菜单 + 按钮（权限点） 1：菜单2：按钮（权限点）3：API接口
+      parameters:
+        - name: type
+          in: query
+          description: 权限类型
+          required: true
+          type: string
+        - name: pid
+          in: query
+          description: 父id
+          required: true
+          type: string     
+        - name: enVisible
+          in: query
+          description: 是否查询全部权限 0：查询全部，1：只查询企业所属权限
+          required: true
+          type: string             
+      responses:
+        200:
+          description: 成功
+          schema: 
+            $ref: '#/definitions/ApiPermissionListResponse'
+  /permission/{permissionId}:
+    get:
+      summary: 根据ID查询permission
+      parameters:
+        - name: permissionId
+          in: path
+          description: PermissionID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiPermissionResponse'
+    put:
+      summary: 修改Permission
+      description: 1：菜单  2：按钮  3：API接口  不同的类型对应不同的实体属性
+      parameters:
+        - name: permissionId
+          in: path
+          description: PermissionID
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Permission实体
+          required: true
+          schema:
+            $ref: "#/definitions/Permission"
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+    delete:
+      summary: 根据ID删除Permission
+      parameters:
+        - name: permissionId
+          in: path
+          description: PermissionID
+          required: true
+          type: string
+      responses:
+        200:
+          description: 成功
+          schema:
+            $ref: '#/definitions/ApiResponse'
+definitions:
+  Permission:
+    type: "object"
+    properties:
+      id:
+        type: "string"        
+        description: "主键"
+      description:
+        type: "string"        
+        description: "权限描述"
+      name:
+        type: "string"        
+        description: "权限名称"
+      type:
+        type: "string"        
+        description: "权限类型 1为菜单 2为功能 3为API"
+      pid:
+        type: "string"        
+        description: "主键"
+      code:
+        type: "string"        
+        description: "编码"
+      apiLevel:
+        type: "string"        
+        description: "权限等级，1为通用接口权限，2为需校验接口权限"
+      apiMethod:
+        type: "string"        
+        description: "请求类型"
+      apiUrl:
+        type: "string"        
+        description: "链接"   
+      menuIcon:
+        type: "string"        
+        description: "权限代码"
+      menuOrder:
+        type: "string"        
+        description: "排序"
+      pointClass:
+        type: "string"        
+        description: "按钮类型"
+      pointIcon:
+        type: "string"        
+        description: "按钮icon"
+      pointStatus:
+        type: "string"        
+        description: "状态"
+  PermissionList:
+    type: "array"
+    items: 
+      $ref: '#/definitions/Permission'
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+  ApiPermissionResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        $ref: '#/definitions/Permission'
+  ApiPermissionListResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int32"
+      flag:
+        type: "boolean"
+      message:
+        type: "string"
+      data:
+        properties: 
+          id:
+            type: "string"        
+            description: "主键"
+          description:
+            type: "string"        
+            description: "权限描述"
+          name:
+            type: "string"        
+            description: "权限名称"
+          type:
+            type: "string"        
+            description: "权限类型 1为菜单 2为功能 3为API"
+          pid:
+            type: "string"        
+            description: "主键"
+          code:
+            type: "string"        
+            description: "编码"

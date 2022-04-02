@@ -7,9 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ihrm_common_model" />
+        <module name="shiro-test" />
         <module name="ihrm_common" />
         <module name="ihrm_company" />
+        <module name="ihrm_common_model" />
+        <module name="ihrm_system" />
+        <module name="shiro_springboot" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -17,6 +20,9 @@
       <module name="ihrm_common_model" target="1.8" />
       <module name="ihrm_company" target="1.8" />
       <module name="ihrm_parent" target="1.8" />
+      <module name="ihrm_system" target="1.8" />
+      <module name="shiro-test" target="8" />
+      <module name="shiro_springboot" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -25,6 +31,8 @@
       <module name="ihrm_common_model" options="-parameters" />
       <module name="ihrm_company" options="-parameters" />
       <module name="ihrm_parent" options="" />
+      <module name="ihrm_system" options="-parameters" />
+      <module name="shiro_springboot" options="-parameters" />
     </option>
   </component>
 </project>
