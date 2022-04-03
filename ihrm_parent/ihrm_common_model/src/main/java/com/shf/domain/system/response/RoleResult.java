@@ -4,6 +4,7 @@ import com.shf.domain.system.Permission;
 import com.shf.domain.system.Role;
 import lombok.Getter;
 import lombok.Setter;
+
 import org.springframework.beans.BeanUtils;
 
 import javax.persistence.Id;

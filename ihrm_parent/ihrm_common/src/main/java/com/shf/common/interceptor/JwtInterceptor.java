@@ -29,7 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  *          统一的用户权限校验（是否登录）
  *   2.判断用户是否具有当前访问接口的权限
  */
-@Component
+//@Component
 public class JwtInterceptor extends HandlerInterceptorAdapter {
 
     /**

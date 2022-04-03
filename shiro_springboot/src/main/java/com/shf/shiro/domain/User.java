@@ -2,6 +2,7 @@ package com.shf.shiro.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.crazycake.shiro.AuthCachePrincipal;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Table(name = "pe_user")
 @Getter
 @Setter
-public class User implements Serializable {
+public class User implements Serializable, AuthCachePrincipal {
     private static final long serialVersionUID = 4297464181093070302L;
     /**
      * ID
@@ -30,4 +31,9 @@ public class User implements Serializable {
             inverseJoinColumns={@JoinColumn(name="role_id",referencedColumnName="id")}
     )
     private Set<Role> roles = new HashSet<Role>();//用户与角色   多对多
+
+    @Override
+    public String getAuthCacheKey() {
+        return null;
+    }
 }

@@ -3,6 +3,7 @@ package com.shf.common.handler;
 import com.shf.common.entity.Result;
 import com.shf.common.entity.ResultCode;
 import com.shf.common.exception.CommonException;
+import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,5 +32,11 @@ public class BaseExceptionHandler {
             Result result = new Result(ResultCode.SERVER_ERROR);
             return result;
         }
+    }
+
+    @ExceptionHandler(value = AuthorizationException.class)
+    @ResponseBody
+    public Result error(HttpServletRequest request, HttpServletResponse response,AuthorizationException e) {
+        return new Result(ResultCode.UNAUTHORISE);
     }
 }

@@ -111,8 +111,6 @@ X
 (nginx-api/contrib/vim/ftplugin/nginx.vim,7\1\7173717c8c241c63bf9565033b75480dd82b6b1b
 \
 ,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
-C
-ihrm_parent/pom.xml,a\7\a77d3f35696796ea685fb86e9589d8780cda33ec
 L
 .idea/codeStyles/Project.xml,6\e\6ecd6000a7b6f4a2884412ff19f74193ed089648
 T
@@ -331,8 +329,6 @@ K
 saas-hrm-vue/src/lang/zh.js,c\2\c2ebd72949f92ff38ce74b66dd9526d749ef271a
 c
 3ihrm_parent/ihrm_common_model/ihrm_common_model.iml,4\1\419326dee0b9245c9477eb9938a45eaea10dceb4
-U
-%ihrm_parent/ihrm_common_model/pom.xml,8\d\8de6df7424b5a2563f29be536fccaccec4f6be2a
 T
 $saas-hrm-vue/src/utils/permission.js,6\0\6032deb941aa01640de1986391feeac242480a34
 Q
@@ -459,8 +455,6 @@ w
 Gihrm_parent/ihrm_company/src/test/java/com/shf/company/CompantTest.java,b\b\bb16022c8612c395d3b2acdfcfcf987f21fd9f6c
 P
  saas-hrm-vue/src/mock/company.js,8\b\8b854cf81bcb737c88aaedfcf481a3334cea28c4
-~
-Nihrm_parent/ihrm_company/src/main/java/com/shf/company/CompanyApplication.java,a\a\aa513212781fc979b4f30ba362ca34416058da60
 ˆ
 Xihrm_parent/ihrm_company/src/main/java/com/shf/company/controller/CompanyController.java,e\c\ec05a42dab05192351990c1d398f4b0f22ed91db
 X
@@ -659,14 +653,10 @@ S
 #nginx-api/html/oauth2-redirect.html,c\8\c8b07d136ee6f90f7005d1622bf4f669deacee06
 T
 $saas-hrm-vue/src/utils/openWindow.js,b\b\bbb60f23b708322561f6969153500c05bb1ae4ff
-‚
-Rihrm_parent/ihrm_common_model/src/main/java/com/shf/domain/company/Department.java,a\b\abc56732104406ae6a303831e4919103ce3d14e0
 }
 Mihrm_parent/ihrm_company/src/main/java/com/shf/company/dao/DepartmentDao.java,1\f\1ffc8b27289b38a61e2ca2bcb104ac2eab736e13
 z
 Jihrm_parent/ihrm_company/src/main/java/com/shf/company/dao/CompanyDao.java,2\6\268b06368e5daa37ce97f2258900383681d52ba9
-
-Oihrm_parent/ihrm_common_model/src/main/java/com/shf/domain/company/Company.java,1\7\17d40e5bb7c35f766a48511c957ca7a5f5b28ce6
 ‚
 Rihrm_parent/ihrm_company/src/main/java/com/shf/company/service/CompanyService.java,5\7\579515a22bba4b7d8d75a6354384501397dbe370
 P

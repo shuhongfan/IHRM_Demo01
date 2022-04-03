@@ -5,6 +5,7 @@ import com.shf.domain.system.Role;
 import com.shf.domain.system.User;
 import com.shf.system.dao.RoleDao;
 import com.shf.system.dao.UserDao;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -45,7 +46,9 @@ public class UserService {
     public void save(User user) {
         //设置主键的值
         String id = idWorker.nextId()+"";
-        user.setPassword("123456");//设置初始密码
+        String password = new Md5Hash("123456", user.getMobile(), 3).toString();
+        user.setLevel("user");
+        user.setPassword(password);//设置初始密码
         user.setEnableState(1);
         user.setId(id);
         //调用dao保存部门
@@ -140,5 +143,11 @@ public class UserService {
         user.setRoles(roles);
         //3.更新用户
         userDao.save(user);
+    }
+
+
+    public static void main(String[] args) {
+        String password = new Md5Hash("123456", "13800000005", 3).toString();
+        System.out.println(password);
     }
 }
